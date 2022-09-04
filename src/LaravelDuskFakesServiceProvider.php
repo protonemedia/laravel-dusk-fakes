@@ -11,14 +11,14 @@ class LaravelDuskFakesServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/dusk-fakes.php',
+            __DIR__.'/../config/dusk-fakes.php',
             'dusk-fakes'
         );
     }
 
     public function boot()
     {
-        if (!config('dusk-fakes.notifications.enabled')) {
+        if (! config('dusk-fakes.notifications.enabled')) {
             return;
         }
 

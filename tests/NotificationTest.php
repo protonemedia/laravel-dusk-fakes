@@ -6,7 +6,8 @@ use ProtoneMedia\LaravelDuskFakes\Notifications\PersistentNotifications;
 use ProtoneMedia\LaravelDuskFakes\Tests\DummyNotification;
 use ProtoneMedia\LaravelDuskFakes\Tests\DummyUser;
 
-$dummyTest = new class {
+$dummyTest = new class
+{
     use PersistentNotifications;
 };
 
