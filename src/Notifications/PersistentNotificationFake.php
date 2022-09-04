@@ -8,13 +8,14 @@ use Illuminate\Support\Testing\Fakes\NotificationFake;
 class PersistentNotificationFake extends NotificationFake
 {
     private string $directory;
+
     private string $storage;
 
     public function __construct()
     {
         $this->directory = rtrim(config('dusk-fakes.notifications.storage_root'), '/');
 
-        $this->storage = $this->directory . '/serialized';
+        $this->storage = $this->directory.'/serialized';
 
         (new Filesystem)->ensureDirectoryExists($this->directory);
 
