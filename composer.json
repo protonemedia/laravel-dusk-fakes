@@ -1,0 +1,61 @@
+{
+    "name": "protonemedia/laravel-dusk-fakes",
+    "description": "Persistent Fakes for Laravel Dusk",
+    "keywords": [
+        "protonemedia",
+        "laravel",
+        "laravel-dusk-fakes"
+    ],
+    "homepage": "https://github.com/protonemedia/laravel-dusk-fakes",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pascal Baljet",
+            "email": "pascal@protone.media",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0|^8.1",
+        "illuminate/contracts": "^9.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "ProtoneMedia\\LaravelDuskFakes\\": "src",
+            "ProtoneMedia\\LaravelDuskFakes\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ProtoneMedia\\LaravelDuskFakes\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ProtoneMedia\\LaravelDuskFakes\\LaravelDuskFakesServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
