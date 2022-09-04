@@ -19,7 +19,7 @@ it('can persist sent notifications', function () use ($dummyTest) {
 
     Notification::send($user, new DummyNotification);
 
-    expect(storage_path('framework/testing/notifications/0'))->toBeFile();
+    expect(storage_path('framework/testing/notifications/serialized'))->toBeFile();
 
     $dummyTest->setUpPersistentNotifications();
 
