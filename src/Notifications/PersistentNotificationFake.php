@@ -34,10 +34,7 @@ class PersistentNotificationFake extends NotificationFake
             /** @var PersistentNotification $persistentNotification */
             $persistentNotification = unserialize(file_get_contents($file->getPathname()));
 
-            $this->notifications
-                [$persistentNotification->notifiableClass]
-                [$persistentNotification->notifiableKey]
-                [$persistentNotification->notificationClass][] = $persistentNotification->notification;
+            $this->notifications[$persistentNotification->notifiableClass][$persistentNotification->notifiableKey][$persistentNotification->notificationClass][] = $persistentNotification->notification;
         });
 
         return $this;
@@ -61,7 +58,7 @@ class PersistentNotificationFake extends NotificationFake
                         $serializable = new PersistentNotification($notifiableClass, $notifiableKey, $notificationClass, $notification);
 
                         file_put_contents(
-                            $this->storageDirectory . '/' . $key,
+                            $this->storageDirectory.'/'.$key,
                             serialize($serializable)
                         );
 

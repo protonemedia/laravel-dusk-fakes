@@ -9,7 +9,6 @@ class PersistentNotification
         public $notifiableKey,
         public $notificationClass,
         public $notification
-    )
-    {
+    ) {
     }
 }
