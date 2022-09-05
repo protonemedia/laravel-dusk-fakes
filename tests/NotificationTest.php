@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Notification;
 use ProtoneMedia\LaravelDuskFakes\Notifications\PersistentNotificationFake;
 use ProtoneMedia\LaravelDuskFakes\Notifications\PersistentNotifications;
+use ProtoneMedia\LaravelDuskFakes\Notifications\UncachedPersistentNotificationFake;
 use ProtoneMedia\LaravelDuskFakes\Tests\DummyNotification;
 use ProtoneMedia\LaravelDuskFakes\Tests\DummyUser;
 
@@ -24,7 +25,13 @@ it('can persist sent notifications', function () use ($dummyTest) {
 
     $dummyTest->setUpPersistentNotifications();
 
+    expect(Notification::getFacadeRoot())->toBeInstanceOf(UncachedPersistentNotificationFake::class);
+
     Notification::assertSentToTimes($user, DummyNotification::class, 1);
+
+    unlink(storage_path('framework/testing/notifications/serialized'));
+
+    Notification::assertNothingSent();
 });
 
 afterEach(fn () => $dummyTest->tearDownPersistentNotifications());

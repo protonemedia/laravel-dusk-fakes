@@ -9,7 +9,7 @@ trait PersistentNotifications
     public function setUpPersistentNotifications()
     {
         Notification::swap(
-            app(PersistentNotificationFake::class)->loadNotifications()
+            app(UncachedPersistentNotificationFake::class)
         );
     }
 

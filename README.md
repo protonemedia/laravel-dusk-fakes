@@ -1,8 +1,9 @@
-# [WIP] Laravel Dusk Fakes
+# Laravel Dusk Fakes
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/protonemedia/laravel-dusk-fakes.svg?style=flat-square)](https://packagist.org/packages/protonemedia/laravel-dusk-fakes)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/protonemedia/laravel-dusk-fakes/run-tests?label=tests)](https://github.com/protonemedia/laravel-dusk-fakes/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/protonemedia/laravel-dusk-fakes.svg?style=flat-square)](https://packagist.org/packages/protonemedia/laravel-dusk-fakes)
+[![Buy us a tree](https://img.shields.io/badge/Treeware-%F0%9F%8C%B3-lightgreen)](https://plant.treeware.earth/protonemedia/laravel-dusk-fakes)
 
 ## Support this package!
 
@@ -13,6 +14,52 @@
 **Did you hear about Laravel Splade? 🤩**
 
 It's the *magic* of Inertia.js with the *simplicity* of Blade. [Splade](https://github.com/protonemedia/laravel-splade) provides a super easy way to build Single Page Applications using Blade templates. Besides that magic SPA-feeling, it comes with more than ten components to sparkle your app and make it interactive, all without ever leaving Blade.
+
+## Installation
+
+You can install the package via composer:
+
+```bash
+composer require protonemedia/laravel-dusk-fakes --dev
+```
+
+Make sure you've set the `DUSK_FAKE_NOTIFICATIONS` environment variable to `true` in the [Dusk environment](https://laravel.com/docs/9.x/dusk#environment-handling).
+
+Finally, add the `PersistentNotifications` trait to your test. You don't have to manually call the `fake()` method on the `Notification` facade.
+
+```php
+<?php
+
+namespace Tests\Browser\Auth;
+
+use App\Models\User;
+use Illuminate\Auth\Notifications\ResetPassword;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Notification;
+use Laravel\Dusk\Browser;
+use ProtoneMedia\LaravelDuskFakes\Notifications\PersistentNotifications;
+use Tests\DuskTestCase;
+
+class PasswordResetTest extends DuskTestCase
+{
+    use DatabaseMigrations;
+    use PersistentNotifications;
+
+    public function test_reset_password_link_can_be_requested()
+    {
+        $this->browse(function (Browser $browser) {
+            $user = User::factory()->create();
+
+            $browser->visit('/forgot-password')
+                ->type('email', $user->email)
+                ->press('Email Password Reset Link')
+                ->waitForText('We have emailed your password reset link!');
+
+            Notification::assertSentTo($user, ResetPassword::class);
+        });
+    }
+}
+```
 
 ## Changelog
 
