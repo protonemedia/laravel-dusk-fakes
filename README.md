@@ -23,6 +23,49 @@ You can install the package via composer:
 composer require protonemedia/laravel-dusk-fakes --dev
 ```
 
+### Persist Mails
+
+Make sure you've set the `DUSK_FAKE_MAILS` environment variable to `true` in the [Dusk environment](https://laravel.com/docs/9.x/dusk#environment-handling).
+
+Finally, add the `PersistentMails` trait to your test. You don't have to manually call the `fake()` method on the `Mail` facade.
+
+```php
+<?php
+
+namespace Tests\Browser\Auth;
+
+use App\Mail\OrderConfirmed;
+use App\Models\Order;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Mail;
+use Laravel\Dusk\Browser;
+use ProtoneMedia\LaravelDuskFakes\Mails\PersistentMails;
+use Tests\DuskTestCase;
+
+class OrderConfirmTest extends DuskTestCase
+{
+    use DatabaseMigrations;
+    use PersistentMails;
+
+    public function test_send_order_confirmed_mailable_to_user()
+    {
+        $this->browse(function (Browser $browser) {
+            $order = Order::factory()->create();
+
+            $browser->visit('/order/'.$order->id)
+                ->press('Confirm')
+                ->waitForText('We have emailed your order confirmation!');
+
+            Mail::assertSent(OrderConfirmed::class, function ($mail) use ($user) {
+                return $mail->hasTo($user->email);
+            });
+        });
+    }
+}
+```
+
+### Persist Notifications
+
 Make sure you've set the `DUSK_FAKE_NOTIFICATIONS` environment variable to `true` in the [Dusk environment](https://laravel.com/docs/9.x/dusk#environment-handling).
 
 Finally, add the `PersistentNotifications` trait to your test. You don't have to manually call the `fake()` method on the `Notification` facade.

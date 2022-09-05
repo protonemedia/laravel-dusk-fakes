@@ -16,6 +16,7 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
+        config()->set('dusk-fakes.mails.enabled', true);
         config()->set('dusk-fakes.notifications.enabled', true);
     }
 }

@@ -13,7 +13,7 @@ $dummyTest = new class
 };
 
 it('can persist sent notifications', function () use ($dummyTest) {
-    expect(storage_path('framework/testing/notifications/0'))->not->toBeFile();
+    expect(storage_path('framework/testing/notifications/serialized'))->not->toBeFile();
 
     expect(Notification::getFacadeRoot())->toBeInstanceOf(PersistentNotificationFake::class);
 
