@@ -18,6 +18,12 @@ class LaravelDuskFakesServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/dusk-fakes.php' => config_path('dusk-fakes.php'),
+            ], 'config');
+        }
+
         if (! config('dusk-fakes.notifications.enabled')) {
             return;
         }
