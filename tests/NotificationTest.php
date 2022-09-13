@@ -12,6 +12,8 @@ $dummyTest = new class
     use PersistentNotifications;
 };
 
+afterEach(fn () => $dummyTest->tearDownPersistentNotifications());
+
 it('can persist sent notifications', function () use ($dummyTest) {
     expect(storage_path('framework/testing/notifications/serialized'))->not->toBeFile();
 
@@ -33,5 +35,3 @@ it('can persist sent notifications', function () use ($dummyTest) {
 
     Notification::assertNothingSent();
 });
-
-afterEach(fn () => $dummyTest->tearDownPersistentNotifications());

@@ -18,7 +18,8 @@
     "require": {
         "php": "^8.0|^8.1",
         "illuminate/contracts": "^9.0",
-        "laravel/dusk": "^7.0"
+        "laravel/dusk": "^7.0",
+        "spatie/invade": "^1.1"
     },
     "conflict": {
         "laravel/framework": "<9.15.0"

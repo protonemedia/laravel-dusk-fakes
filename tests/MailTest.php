@@ -11,6 +11,8 @@ $dummyTest = new class
     use PersistentMails;
 };
 
+afterEach(fn () => $dummyTest->tearDownPersistentMails());
+
 it('can persist sent mails', function () use ($dummyTest) {
     expect(storage_path('framework/testing/mails/serialized'))->not->toBeFile();
 
@@ -32,8 +34,6 @@ it('can persist sent mails', function () use ($dummyTest) {
 
     Mail::assertNothingSent();
 });
-
-afterEach(fn () => $dummyTest->tearDownPersistentMails());
 
 it('can persist queued mails', function () use ($dummyTest) {
     expect(storage_path('framework/testing/mails/0'))->not->toBeFile();
