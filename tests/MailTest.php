@@ -14,8 +14,6 @@ $dummyTest = new class
 afterEach(fn () => $dummyTest->tearDownPersistentMails());
 
 it('can persist sent mails', function () use ($dummyTest) {
-    expect(storage_path('framework/testing/mails/serialized'))->not->toBeFile();
-
     expect(Mail::getFacadeRoot())->toBeInstanceOf(PersistentMailFake::class);
 
     Mail::to('test@example.com')->send(new DummyMail);
@@ -36,8 +34,6 @@ it('can persist sent mails', function () use ($dummyTest) {
 });
 
 it('can persist queued mails', function () use ($dummyTest) {
-    expect(storage_path('framework/testing/mails/0'))->not->toBeFile();
-
     expect(Mail::getFacadeRoot())->toBeInstanceOf(PersistentMailFake::class);
 
     Mail::to('test@example.com')->queue(new DummyMail);

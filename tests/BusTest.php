@@ -16,8 +16,6 @@ $dummyTest = new class
 afterEach(fn () => $dummyTest->tearDownPersistentBus());
 
 it('can persist a queued job', function () use ($dummyTest) {
-    expect(storage_path('framework/testing/bus/serialized'))->not->toBeFile();
-
     expect(Bus::getFacadeRoot())->toBeInstanceOf(PersistentBusFake::class);
 
     Bus::dispatch(new DummyJob);
@@ -36,8 +34,6 @@ it('can persist a queued job', function () use ($dummyTest) {
 });
 
 it('can persist a specific queued job', function () use ($dummyTest) {
-    expect(storage_path('framework/testing/bus/serialized'))->not->toBeFile();
-
     expect(Bus::getFacadeRoot())->toBeInstanceOf(PersistentBusFake::class);
 
     Bus::jobsToFake(DummyJob::class);
@@ -56,8 +52,6 @@ it('can persist a specific queued job', function () use ($dummyTest) {
 });
 
 it('can persist a queued job using the sync method', function () use ($dummyTest) {
-    expect(storage_path('framework/testing/bus/serialized'))->not->toBeFile();
-
     expect(Bus::getFacadeRoot())->toBeInstanceOf(PersistentBusFake::class);
 
     Bus::dispatchSync(new DummyJob);
@@ -76,8 +70,6 @@ it('can persist a queued job using the sync method', function () use ($dummyTest
 });
 
 it('can persist a queued job using the now method', function () use ($dummyTest) {
-    expect(storage_path('framework/testing/bus/serialized'))->not->toBeFile();
-
     expect(Bus::getFacadeRoot())->toBeInstanceOf(PersistentBusFake::class);
 
     Bus::dispatchNow(new DummyJob);
@@ -96,8 +88,6 @@ it('can persist a queued job using the now method', function () use ($dummyTest)
 });
 
 it('can persist a queued job using the toQueue method', function () use ($dummyTest) {
-    expect(storage_path('framework/testing/bus/serialized'))->not->toBeFile();
-
     expect(Bus::getFacadeRoot())->toBeInstanceOf(PersistentBusFake::class);
 
     Bus::dispatchToQueue(new DummyJob);
@@ -116,8 +106,6 @@ it('can persist a queued job using the toQueue method', function () use ($dummyT
 });
 
 it('can persist a queued job using the afterResponse method', function () use ($dummyTest) {
-    expect(storage_path('framework/testing/bus/serialized'))->not->toBeFile();
-
     expect(Bus::getFacadeRoot())->toBeInstanceOf(PersistentBusFake::class);
 
     dispatch(new DummyJob)->afterResponse();
@@ -136,8 +124,6 @@ it('can persist a queued job using the afterResponse method', function () use ($
 });
 
 it('can persist a queued batch', function () use ($dummyTest) {
-    expect(storage_path('framework/testing/bus/serialized'))->not->toBeFile();
-
     expect(Bus::getFacadeRoot())->toBeInstanceOf(PersistentBusFake::class);
 
     Bus::batch([

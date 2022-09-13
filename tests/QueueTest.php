@@ -16,8 +16,6 @@ beforeEach(fn () => $dummyTest->tearDownPersistentQueue());
 afterEach(fn () => $dummyTest->tearDownPersistentQueue());
 
 it('can persist a queued job', function () use ($dummyTest) {
-    expect(storage_path('framework/testing/queue/serialized'))->not->toBeFile();
-
     expect(Queue::getFacadeRoot())->toBeInstanceOf(PersistentQueueFake::class);
 
     Queue::push(new DummyJob);
@@ -36,8 +34,6 @@ it('can persist a queued job', function () use ($dummyTest) {
 });
 
 it('can persist a specific queued job', function () use ($dummyTest) {
-    expect(storage_path('framework/testing/queue/serialized'))->not->toBeFile();
-
     expect(Queue::getFacadeRoot())->toBeInstanceOf(PersistentQueueFake::class);
 
     Queue::jobsToFake(DummyJob::class);
