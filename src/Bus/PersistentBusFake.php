@@ -21,7 +21,7 @@ class PersistentBusFake extends BusFake
 
         $this->directory = rtrim(config('dusk-fakes.bus.storage_root'), '/');
 
-        $this->storage = $this->directory.'/serialized';
+        $this->storage = $this->directory . '/serialized';
 
         (new Filesystem)->ensureDirectoryExists($this->directory);
 
@@ -46,18 +46,11 @@ class PersistentBusFake extends BusFake
             ? unserialize(file_get_contents($this->storage))
             : [];
 
-        $this->jobsToFake = $unserialized['jobsToFake'] ?? [];
-        $this->commands = $unserialized['commands'] ?? [];
-        $this->commandsSync = $unserialized['commandsSync'] ?? [];
+        $this->jobsToFake            = $unserialized['jobsToFake']            ?? [];
+        $this->commands              = $unserialized['commands']              ?? [];
+        $this->commandsSync          = $unserialized['commandsSync']          ?? [];
         $this->commandsAfterResponse = $unserialized['commandsAfterResponse'] ?? [];
-
-        $this->batches = collect($unserialized['batches'] ?? [])->map(function (PendingBatchFake $batch) {
-            tap(invade($batch), function ($batch) {
-                $batch->bus = $this;
-            });
-
-            return $batch;
-        })->all();
+        $this->batches               = $unserialized['batches']               ?? [];
 
         return $this;
     }
@@ -92,14 +85,37 @@ class PersistentBusFake extends BusFake
         return tap(parent::recordPendingBatch($pendingBatch), fn () => $this->storeBus());
     }
 
+    public function cleanupCommand(array $jobs): array
+    {
+        return collect($jobs)->map(function ($job) {
+            tap(invade($job), function ($job) {
+                if (! $job->job) {
+                    return;
+                }
+
+                $job            = invade($job->job);
+                $job->container = null;
+
+                if (! $job->instance) {
+                    return;
+                }
+
+                invade($job->instance)->container  = null;
+                invade($job->instance)->dispatcher = null;
+            });
+
+            return $job;
+        })->all();
+    }
+
     private function storeBus()
     {
         file_put_contents($this->storage, serialize([
-            'jobsToFake' => $this->jobsToFake,
-            'commands' => $this->commands,
-            'commandsSync' => $this->commandsSync,
-            'commandsAfterResponse' => $this->commandsAfterResponse,
-            'batches' => collect($this->batches)->each(function (PendingBatchFake $batch) {
+            'jobsToFake'            => $this->jobsToFake,
+            'commands'              => collect($this->commands)->map([$this, 'cleanupCommand'])->all(),
+            'commandsSync'          => collect($this->commandsSync)->map([$this, 'cleanupCommand'])->all(),
+            'commandsAfterResponse' => collect($this->commandsAfterResponse)->map([$this, 'cleanupCommand'])->all(),
+            'batches'               => collect($this->batches)->each(function (PendingBatchFake $batch) {
                 tap(invade($batch), function ($batch) {
                     $batch->bus = null;
                 });

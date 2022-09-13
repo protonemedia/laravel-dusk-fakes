@@ -3,14 +3,17 @@
 namespace ProtoneMedia\LaravelDuskFakes;
 
 use Illuminate\Contracts\Bus\QueueingDispatcher;
+use Illuminate\Contracts\Queue\Queue as QueueContract;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\ServiceProvider;
 use ProtoneMedia\LaravelDuskFakes\Bus\PersistentBusFake;
 use ProtoneMedia\LaravelDuskFakes\Mails\PersistentMailFake;
 use ProtoneMedia\LaravelDuskFakes\Notifications\PersistentNotificationFake;
+use ProtoneMedia\LaravelDuskFakes\Queue\PersistentQueueFake;
 
 class LaravelDuskFakesServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -33,6 +36,7 @@ class LaravelDuskFakesServiceProvider extends ServiceProvider implements Deferra
         $this->bootFakeBus();
         $this->bootFakeMails();
         $this->bootFakeNotifications();
+        $this->bootFakeQueue();
     }
 
     private function bootFakeBus()
@@ -81,5 +85,21 @@ class LaravelDuskFakesServiceProvider extends ServiceProvider implements Deferra
         );
 
         Notification::swap($fake);
+    }
+
+    private function bootFakeQueue()
+    {
+        if (! config('dusk-fakes.queue.enabled')) {
+            return;
+        }
+
+        $fake = new PersistentQueueFake(app(), [], app(QueueContract::class));
+
+        $this->app->singleton(
+            PersistentQueueFake::class,
+            fn () => $fake
+        );
+
+        Queue::swap($fake);
     }
 }

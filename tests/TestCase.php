@@ -19,5 +19,6 @@ class TestCase extends Orchestra
         config()->set('dusk-fakes.bus.enabled', true);
         config()->set('dusk-fakes.mails.enabled', true);
         config()->set('dusk-fakes.notifications.enabled', true);
+        config()->set('dusk-fakes.queue.enabled', true);
     }
 }
