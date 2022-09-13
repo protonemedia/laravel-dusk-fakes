@@ -23,6 +23,55 @@ You can install the package via composer:
 composer require protonemedia/laravel-dusk-fakes --dev
 ```
 
+### Persist Bus (queued jobs)
+
+Make sure you've set the `DUSK_FAKE_BUS` environment variable to `true` in the [Dusk environment](https://laravel.com/docs/9.x/dusk#environment-handling).
+
+Finally, add the `PersistentBus` trait to your test. You don't have to manually call the `fake()` method on the `Bus` facade.
+
+```php
+<?php
+
+namespace Tests\Browser\Auth;
+
+use App\Jobs\SendOrderInvoice;
+use App\Models\Order;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Mail;
+use Laravel\Dusk\Browser;
+use ProtoneMedia\LaravelDuskFakes\Bus\PersistentBus;
+use Tests\DuskTestCase;
+
+class OrderInvoiceTest extends DuskTestCase
+{
+    use DatabaseMigrations;
+    use PersistentBus;
+
+    public function test_dispatch_invoice_job_after_confirming_order()
+    {
+        $this->browse(function (Browser $browser) {
+            $order = Order::factory()->create();
+
+            $browser->visit('/order/'.$order->id)
+                ->press('Confirm')
+                ->waitForText('We will generate an invoice!');
+
+            Bus::assertDispatched(SendOrderInvoice::class);
+        });
+    }
+}
+```
+
+If you only need to fake specific jobs while allowing your other jobs to execute normally, you may pass the class names of the jobs that should be faked to the `jobsToFake()` method:
+
+```php
+Bus::jobsToFake(ShipOrder::class);
+
+$browser->visit(...);
+
+Bus::assertDispatched(SendOrderInvoice::class);
+```
+
 ### Persist Mails
 
 Make sure you've set the `DUSK_FAKE_MAILS` environment variable to `true` in the [Dusk environment](https://laravel.com/docs/9.x/dusk#environment-handling).
@@ -102,6 +151,55 @@ class PasswordResetTest extends DuskTestCase
         });
     }
 }
+```
+
+### Persist Queue
+
+Make sure you've set the `DUSK_FAKE_QUEUE` environment variable to `true` in the [Dusk environment](https://laravel.com/docs/9.x/dusk#environment-handling).
+
+Finally, add the `PersistentQueue` trait to your test. You don't have to manually call the `fake()` method on the `Queue` facade.
+
+```php
+<?php
+
+namespace Tests\Browser\Auth;
+
+use App\Jobs\SendOrderInvoice;
+use App\Models\Order;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Mail;
+use Laravel\Dusk\Browser;
+use ProtoneMedia\LaravelDuskFakes\Queue\PersistentQueue;
+use Tests\DuskTestCase;
+
+class OrderInvoiceTest extends DuskTestCase
+{
+    use DatabaseMigrations;
+    use PersistentQueue;
+
+    public function test_dispatch_invoice_job_after_confirming_order()
+    {
+        $this->browse(function (Browser $browser) {
+            $order = Order::factory()->create();
+
+            $browser->visit('/order/'.$order->id)
+                ->press('Confirm')
+                ->waitForText('We will generate an invoice!');
+
+            Queue::assertDispatched(SendOrderInvoice::class);
+        });
+    }
+}
+```
+
+If you only need to fake specific jobs while allowing your other jobs to execute normally, you may pass the class names of the jobs that should be faked to the `jobsToFake()` method:
+
+```php
+Queue::jobsToFake(ShipOrder::class);
+
+$browser->visit(...);
+
+Queue::assertDispatched(SendOrderInvoice::class);
 ```
 
 ## Changelog

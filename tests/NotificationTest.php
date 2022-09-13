@@ -12,9 +12,9 @@ $dummyTest = new class
     use PersistentNotifications;
 };
 
-it('can persist sent notifications', function () use ($dummyTest) {
-    expect(storage_path('framework/testing/notifications/serialized'))->not->toBeFile();
+afterEach(fn () => $dummyTest->tearDownPersistentNotifications());
 
+it('can persist sent notifications', function () use ($dummyTest) {
     expect(Notification::getFacadeRoot())->toBeInstanceOf(PersistentNotificationFake::class);
 
     $user = (new DummyUser)->forceFill(['id' => 1]);
@@ -33,5 +33,3 @@ it('can persist sent notifications', function () use ($dummyTest) {
 
     Notification::assertNothingSent();
 });
-
-afterEach(fn () => $dummyTest->tearDownPersistentNotifications());
