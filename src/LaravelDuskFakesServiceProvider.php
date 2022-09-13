@@ -4,7 +4,6 @@ namespace ProtoneMedia\LaravelDuskFakes;
 
 use Illuminate\Contracts\Bus\QueueingDispatcher;
 use Illuminate\Contracts\Queue\Queue as QueueContract;
-use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
@@ -15,7 +14,7 @@ use ProtoneMedia\LaravelDuskFakes\Mails\PersistentMailFake;
 use ProtoneMedia\LaravelDuskFakes\Notifications\PersistentNotificationFake;
 use ProtoneMedia\LaravelDuskFakes\Queue\PersistentQueueFake;
 
-class LaravelDuskFakesServiceProvider extends ServiceProvider implements DeferrableProvider
+class LaravelDuskFakesServiceProvider extends ServiceProvider
 {
     public function register()
     {
