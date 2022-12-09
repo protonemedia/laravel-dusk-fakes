@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": "^8.0|^8.1",
+        "php": "^8.0|^8.1|^8.2",
         "illuminate/contracts": "^9.0",
         "laravel/dusk": "^7.0"
     },
@@ -25,6 +25,7 @@
     },
     "require-dev": {
         "laravel/pint": "^1.0",
+        "nesbot/carbon": "^2.63",
         "nunomaduro/collision": "^6.0",
         "orchestra/testbench": "^7.0",
         "pestphp/pest": "^1.21",
