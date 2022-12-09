@@ -5,7 +5,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/protonemedia/laravel-dusk-fakes.svg?style=flat-square)](https://packagist.org/packages/protonemedia/laravel-dusk-fakes)
 [![Buy us a tree](https://img.shields.io/badge/Treeware-%F0%9F%8C%B3-lightgreen)](https://plant.treeware.earth/protonemedia/laravel-dusk-fakes)
 
-## Support this package!
+## Sponsor this package!
 
 ❤️ We proudly support the community by developing Laravel packages and giving them away for free. If this package saves you time or if you're relying on it professionally, please consider [sponsoring the maintenance and development](https://github.com/sponsors/pascalbaljet). Keeping track of issues and pull requests takes time, but we're happy to help!
 
