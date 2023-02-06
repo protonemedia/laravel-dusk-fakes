@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-dusk-fakes` will be documented in this file.
 
+## 1.3.0 - 2023-02-06
+
+- Support for Laravel 10
+
 ## 1.2.0 - 2022-12-09
 
 - Support for PHP 8.2
