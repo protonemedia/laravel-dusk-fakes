@@ -30,7 +30,7 @@ class PersistentNotificationFake extends NotificationFake
     public function loadNotifications(): self
     {
         $this->notifications = file_exists($this->storage)
-            ? unserialize(file_get_contents($this->storage))
+            ? rescue(fn () => unserialize(file_get_contents($this->storage)), [], false)
             : [];
 
         return $this;
