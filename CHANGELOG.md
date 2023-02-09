@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-dusk-fakes` will be documented in this file.
 
+## 1.3.1 - 2023-02-09
+
+- Fix for restoring corrupted storage
+
 ## 1.3.0 - 2023-02-06
 
 - Support for Laravel 10
