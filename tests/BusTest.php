@@ -13,7 +13,8 @@ $dummyTest = new class
     use PersistentBus;
 };
 
-afterEach(fn () => $dummyTest->tearDownPersistentBus());
+beforeEach(fn () => app(PersistentBusFake::class)->cleanStorage());
+afterEach(fn () => app(PersistentBusFake::class)->cleanStorage());
 
 it('can persist a queued job', function () use ($dummyTest) {
     expect(Bus::getFacadeRoot())->toBeInstanceOf(PersistentBusFake::class);

@@ -12,8 +12,8 @@ $dummyTest = new class
     use PersistentQueue;
 };
 
-beforeEach(fn () => $dummyTest->tearDownPersistentQueue());
-afterEach(fn () => $dummyTest->tearDownPersistentQueue());
+beforeEach(fn () => app(PersistentQueueFake::class)->cleanStorage());
+afterEach(fn () => app(PersistentQueueFake::class)->cleanStorage());
 
 it('can persist a queued job', function () use ($dummyTest) {
     expect(Queue::getFacadeRoot())->toBeInstanceOf(PersistentQueueFake::class);

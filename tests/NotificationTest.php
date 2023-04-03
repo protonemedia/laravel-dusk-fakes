@@ -12,7 +12,8 @@ $dummyTest = new class
     use PersistentNotifications;
 };
 
-afterEach(fn () => $dummyTest->tearDownPersistentNotifications());
+beforeEach(fn () => app(PersistentNotificationFake::class)->cleanStorage());
+afterEach(fn () => app(PersistentNotificationFake::class)->cleanStorage());
 
 it('can persist sent notifications', function () use ($dummyTest) {
     expect(Notification::getFacadeRoot())->toBeInstanceOf(PersistentNotificationFake::class);

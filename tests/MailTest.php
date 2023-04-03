@@ -11,7 +11,8 @@ $dummyTest = new class
     use PersistentMails;
 };
 
-afterEach(fn () => $dummyTest->tearDownPersistentMails());
+beforeEach(fn () => app(PersistentMailFake::class)->cleanStorage());
+afterEach(fn () => app(PersistentMailFake::class)->cleanStorage());
 
 it('can persist sent mails', function () use ($dummyTest) {
     expect(Mail::getFacadeRoot())->toBeInstanceOf(PersistentMailFake::class);

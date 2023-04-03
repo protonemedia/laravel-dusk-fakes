@@ -40,7 +40,7 @@ class PersistentQueueFake extends QueueFake
     public function loadQueue(): self
     {
         $unserialized = file_exists($this->storage)
-            ? unserialize(file_get_contents($this->storage))
+            ? rescue(fn () => unserialize(file_get_contents($this->storage)), [], false)
             : [];
 
         $this->jobsToFake = Collection::wrap($unserialized['jobsToFake'] ?? []);
