@@ -30,7 +30,7 @@ class PersistentMailFake extends MailFake
     public function loadMails(): self
     {
         $unserialized = file_exists($this->storage)
-            ? unserialize(file_get_contents($this->storage))
+            ? rescue(fn () => unserialize(file_get_contents($this->storage)), [], false)
             : [];
 
         $this->mailables = $unserialized['mailables'] ?? [];
