@@ -186,7 +186,7 @@ class OrderInvoiceTest extends DuskTestCase
                 ->press('Confirm')
                 ->waitForText('We will generate an invoice!');
 
-            Queue::assertDispatched(SendOrderInvoice::class);
+            Queue::assertPushed(SendOrderInvoice::class);
         });
     }
 }
@@ -199,7 +199,7 @@ Queue::jobsToFake(ShipOrder::class);
 
 $browser->visit(...);
 
-Queue::assertDispatched(SendOrderInvoice::class);
+Queue::assertPushed(SendOrderInvoice::class);
 ```
 
 ## Changelog
