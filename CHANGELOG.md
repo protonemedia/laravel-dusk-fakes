@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-dusk-fakes` will be documented in this file.
 
+## 1.4.0 - 2023-04-04
+
+- Support for persistent Bus + Queue fake
+- Drop support for Laravel 9
+- Drop support for PHP 8.0
+
 ## 1.3.1 - 2023-02-09
 
 - Fix for restoring corrupted storage
