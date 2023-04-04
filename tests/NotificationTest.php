@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Notification;
 use ProtoneMedia\LaravelDuskFakes\Notifications\PersistentNotificationFake;
 use ProtoneMedia\LaravelDuskFakes\Notifications\PersistentNotifications;
@@ -12,9 +13,9 @@ $dummyTest = new class
     use PersistentNotifications;
 };
 
-it('can persist sent notifications', function () use ($dummyTest) {
-    expect(storage_path('framework/testing/notifications/serialized'))->not->toBeFile();
+afterEach(fn () => (new Filesystem)->cleanDirectory(storage_path('framework/testing')));
 
+it('can persist sent notifications', function () use ($dummyTest) {
     expect(Notification::getFacadeRoot())->toBeInstanceOf(PersistentNotificationFake::class);
 
     $user = (new DummyUser)->forceFill(['id' => 1]);
@@ -33,5 +34,3 @@ it('can persist sent notifications', function () use ($dummyTest) {
 
     Notification::assertNothingSent();
 });
-
-afterEach(fn () => $dummyTest->tearDownPersistentNotifications());

@@ -45,6 +45,8 @@ class PersistentNotificationFake extends NotificationFake
 
     private function storeNotifications()
     {
+        (new Filesystem)->ensureDirectoryExists($this->directory);
+
         file_put_contents($this->storage, serialize($this->notifications));
     }
 }

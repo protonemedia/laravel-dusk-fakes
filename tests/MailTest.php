@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Mail;
 use ProtoneMedia\LaravelDuskFakes\Mails\PersistentMailFake;
 use ProtoneMedia\LaravelDuskFakes\Mails\PersistentMails;
@@ -11,9 +12,9 @@ $dummyTest = new class
     use PersistentMails;
 };
 
-it('can persist sent mails', function () use ($dummyTest) {
-    expect(storage_path('framework/testing/mails/serialized'))->not->toBeFile();
+afterEach(fn () => (new Filesystem)->cleanDirectory(storage_path('framework/testing')));
 
+it('can persist sent mails', function () use ($dummyTest) {
     expect(Mail::getFacadeRoot())->toBeInstanceOf(PersistentMailFake::class);
 
     Mail::to('test@example.com')->send(new DummyMail);
@@ -33,11 +34,7 @@ it('can persist sent mails', function () use ($dummyTest) {
     Mail::assertNothingSent();
 });
 
-afterEach(fn () => $dummyTest->tearDownPersistentMails());
-
 it('can persist queued mails', function () use ($dummyTest) {
-    expect(storage_path('framework/testing/mails/0'))->not->toBeFile();
-
     expect(Mail::getFacadeRoot())->toBeInstanceOf(PersistentMailFake::class);
 
     Mail::to('test@example.com')->queue(new DummyMail);

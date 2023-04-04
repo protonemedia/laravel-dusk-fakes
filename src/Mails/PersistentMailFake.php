@@ -55,6 +55,8 @@ class PersistentMailFake extends MailFake
 
     private function storeMails()
     {
+        (new Filesystem)->ensureDirectoryExists($this->directory);
+
         file_put_contents($this->storage, serialize([
             'mailables' => $this->mailables,
             'queuedMailables' => $this->queuedMailables,
