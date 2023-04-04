@@ -43,7 +43,8 @@ class PersistentQueueFake extends QueueFake
             ? rescue(fn () => unserialize(file_get_contents($this->storage)), [], false)
             : [];
 
-        $this->jobsToFake = Collection::wrap($unserialized['jobsToFake'] ?? []);
+        $this->jobsToFake = Collection::make($unserialized['jobsToFake'] ?? []);
+        $this->jobsToBeQueued = Collection::make($unserialized['jobsToBeQueued'] ?? []);
         $this->jobs = $unserialized['jobs'] ?? [];
 
         return $this;
@@ -58,8 +59,11 @@ class PersistentQueueFake extends QueueFake
 
     private function storeQueue()
     {
+        (new Filesystem)->ensureDirectoryExists($this->directory);
+
         file_put_contents($this->storage, serialize([
-            'jobsToFake' => Collection::wrap($this->jobsToFake)->all(),
+            'jobsToFake' => $this->jobsToFake->all(),
+            'jobsToBeQueued' => $this->jobsToBeQueued->all(),
             'jobs' => $this->jobs,
         ]));
     }

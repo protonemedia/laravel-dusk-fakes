@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Queue;
 use ProtoneMedia\LaravelDuskFakes\Queue\PersistentQueue;
 use ProtoneMedia\LaravelDuskFakes\Queue\PersistentQueueFake;
@@ -12,8 +13,7 @@ $dummyTest = new class
     use PersistentQueue;
 };
 
-beforeEach(fn () => app(PersistentQueueFake::class)->cleanStorage());
-afterEach(fn () => app(PersistentQueueFake::class)->cleanStorage());
+afterEach(fn () => (new Filesystem)->cleanDirectory(storage_path('framework/testing')));
 
 it('can persist a queued job', function () use ($dummyTest) {
     expect(Queue::getFacadeRoot())->toBeInstanceOf(PersistentQueueFake::class);

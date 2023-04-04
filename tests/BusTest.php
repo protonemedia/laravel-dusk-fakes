@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Testing\Fakes\PendingBatchFake;
 use ProtoneMedia\LaravelDuskFakes\Bus\PersistentBus;
@@ -13,8 +14,7 @@ $dummyTest = new class
     use PersistentBus;
 };
 
-beforeEach(fn () => app(PersistentBusFake::class)->cleanStorage());
-afterEach(fn () => app(PersistentBusFake::class)->cleanStorage());
+afterEach(fn () => (new Filesystem)->cleanDirectory(storage_path('framework/testing')));
 
 it('can persist a queued job', function () use ($dummyTest) {
     expect(Bus::getFacadeRoot())->toBeInstanceOf(PersistentBusFake::class);

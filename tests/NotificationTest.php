@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Notification;
 use ProtoneMedia\LaravelDuskFakes\Notifications\PersistentNotificationFake;
 use ProtoneMedia\LaravelDuskFakes\Notifications\PersistentNotifications;
@@ -12,8 +13,7 @@ $dummyTest = new class
     use PersistentNotifications;
 };
 
-beforeEach(fn () => app(PersistentNotificationFake::class)->cleanStorage());
-afterEach(fn () => app(PersistentNotificationFake::class)->cleanStorage());
+afterEach(fn () => (new Filesystem)->cleanDirectory(storage_path('framework/testing')));
 
 it('can persist sent notifications', function () use ($dummyTest) {
     expect(Notification::getFacadeRoot())->toBeInstanceOf(PersistentNotificationFake::class);

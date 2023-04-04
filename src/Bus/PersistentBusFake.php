@@ -110,6 +110,8 @@ class PersistentBusFake extends BusFake
 
     private function storeBus()
     {
+        (new Filesystem)->ensureDirectoryExists($this->directory);
+
         file_put_contents($this->storage, serialize([
             'jobsToFake' => $this->jobsToFake,
             'commands' => collect($this->commands)->map([$this, 'cleanupCommand'])->all(),
