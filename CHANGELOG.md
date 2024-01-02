@@ -2,6 +2,21 @@
 
 All notable changes to `laravel-dusk-fakes` will be documented in this file.
 
+## 1.5.0 - 2024-01-02
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 1.3.6 to 1.4.0 by @dependabot in https://github.com/protonemedia/laravel-dusk-fakes/pull/10
+* Bump dependabot/fetch-metadata from 1.4.0 to 1.5.0 by @dependabot in https://github.com/protonemedia/laravel-dusk-fakes/pull/11
+* Bump dependabot/fetch-metadata from 1.5.0 to 1.5.1 by @dependabot in https://github.com/protonemedia/laravel-dusk-fakes/pull/12
+* Bump dependabot/fetch-metadata from 1.5.1 to 1.6.0 by @dependabot in https://github.com/protonemedia/laravel-dusk-fakes/pull/14
+* Support for PHP 8.3. Dropped support for Laravel 9 by @pascalbaljet in https://github.com/protonemedia/laravel-dusk-fakes/pull/17
+* Bump aglipanci/laravel-pint-action from 2.2.0 to 2.3.0 by @dependabot in https://github.com/protonemedia/laravel-dusk-fakes/pull/13
+* Bump actions/checkout from 3 to 4 by @dependabot in https://github.com/protonemedia/laravel-dusk-fakes/pull/15
+* Bump stefanzweifel/git-auto-commit-action from 4 to 5 by @dependabot in https://github.com/protonemedia/laravel-dusk-fakes/pull/16
+
+**Full Changelog**: https://github.com/protonemedia/laravel-dusk-fakes/compare/1.4.0...1.5.0
+
 ## 1.4.0 - 2023-04-04
 
 - Support for persistent Bus + Queue fake
