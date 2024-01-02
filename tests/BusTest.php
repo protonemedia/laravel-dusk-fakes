@@ -140,7 +140,7 @@ it('can persist a queued batch', function () use ($dummyTest) {
 
     Bus::assertBatchCount(1);
     Bus::assertBatched(function (PendingBatchFake $batch) {
-        return  $batch->jobs->count() === 2;
+        return $batch->jobs->count() === 2;
     });
 
     unlink(storage_path('framework/testing/bus/serialized'));

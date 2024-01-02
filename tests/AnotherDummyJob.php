@@ -9,7 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 
 class AnotherDummyJob implements ShouldQueue
 {
-    use InteractsWithQueue, Queueable, Batchable;
+    use Batchable, InteractsWithQueue, Queueable;
 
     public function handle()
     {
