@@ -9,5 +9,5 @@ use Illuminate\Queue\InteractsWithQueue;
 
 class DummyJob implements ShouldQueue
 {
-    use InteractsWithQueue, Queueable, Batchable;
+    use Batchable, InteractsWithQueue, Queueable;
 }

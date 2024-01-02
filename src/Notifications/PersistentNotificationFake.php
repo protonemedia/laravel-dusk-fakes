@@ -36,7 +36,7 @@ class PersistentNotificationFake extends NotificationFake
         return $this;
     }
 
-    public function sendNow($notifiables, $notification, array $channels = null)
+    public function sendNow($notifiables, $notification, ?array $channels = null)
     {
         parent::sendNow($notifiables, $notification, $channels);
 
