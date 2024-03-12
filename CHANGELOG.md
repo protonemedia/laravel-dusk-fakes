@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-dusk-fakes` will be documented in this file.
 
+## 1.6.0 - 2024-03-12
+
+### What's Changed
+
+* Bump aglipanci/laravel-pint-action from 2.3.0 to 2.3.1 by @dependabot in https://github.com/protonemedia/laravel-dusk-fakes/pull/18
+* Support for Laravel 11 by @pascalbaljet in https://github.com/protonemedia/laravel-dusk-fakes/pull/19
+
+**Full Changelog**: https://github.com/protonemedia/laravel-dusk-fakes/compare/1.5.0...1.6.0
+
 ## 1.5.0 - 2024-01-02
 
 ### What's Changed
