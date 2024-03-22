@@ -1,7 +1,7 @@
 # Laravel Dusk Fakes
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/protonemedia/laravel-dusk-fakes.svg?style=flat-square)](https://packagist.org/packages/protonemedia/laravel-dusk-fakes)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/protonemedia/laravel-dusk-fakes/run-tests?label=tests)](https://github.com/protonemedia/laravel-dusk-fakes/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![run-tests](https://github.com/protonemedia/laravel-dusk-fakes/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/protonemedia/laravel-dusk-fakes/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/protonemedia/laravel-dusk-fakes.svg?style=flat-square)](https://packagist.org/packages/protonemedia/laravel-dusk-fakes)
 [![Buy us a tree](https://img.shields.io/badge/Treeware-%F0%9F%8C%B3-lightgreen)](https://plant.treeware.earth/protonemedia/laravel-dusk-fakes)
 
