@@ -11,9 +11,7 @@ class UncachedPersistentMailFake
 {
     use ForwardsCalls;
 
-    public function __construct(private PersistentMailFake $fake)
-    {
-    }
+    public function __construct(private PersistentMailFake $fake) {}
 
     /**
      * Handle dynamic method calls into the fake.

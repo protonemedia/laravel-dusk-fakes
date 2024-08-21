@@ -11,7 +11,5 @@ class DummyNotification extends Notification
         return ['mail'];
     }
 
-    public function toMail()
-    {
-    }
+    public function toMail() {}
 }

@@ -11,9 +11,7 @@ class UncachedPersistentNotificationFake
 {
     use ForwardsCalls;
 
-    public function __construct(private PersistentNotificationFake $fake)
-    {
-    }
+    public function __construct(private PersistentNotificationFake $fake) {}
 
     /**
      * Handle dynamic method calls into the fake.

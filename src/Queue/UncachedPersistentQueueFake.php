@@ -11,9 +11,7 @@ class UncachedPersistentQueueFake
 {
     use ForwardsCalls;
 
-    public function __construct(private PersistentQueueFake $fake)
-    {
-    }
+    public function __construct(private PersistentQueueFake $fake) {}
 
     /**
      * Handle dynamic method calls into the fake.

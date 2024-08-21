@@ -11,9 +11,7 @@ class UncachedPersistentBusFake
 {
     use ForwardsCalls;
 
-    public function __construct(private PersistentBusFake $fake)
-    {
-    }
+    public function __construct(private PersistentBusFake $fake) {}
 
     /**
      * Handle dynamic method calls into the fake.
