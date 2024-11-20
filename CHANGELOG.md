@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-dusk-fakes` will be documented in this file.
 
+## 1.7.0 - 2024-11-20
+
+### What's Changed
+
+* Support for PHP 8.4 by @pascalbaljet in https://github.com/protonemedia/laravel-dusk-fakes/pull/24
+
+**Full Changelog**: https://github.com/protonemedia/laravel-dusk-fakes/compare/1.6.0...1.7.0
+
 ## 1.6.0 - 2024-03-12
 
 ### What's Changed
