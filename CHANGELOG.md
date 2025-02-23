@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-dusk-fakes` will be documented in this file.
 
+## 1.8.0 - 2025-02-23
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/protonemedia/laravel-dusk-fakes/pull/25
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot in https://github.com/protonemedia/laravel-dusk-fakes/pull/26
+* Support for Laravel 12 by @pascalbaljet in https://github.com/protonemedia/laravel-dusk-fakes/pull/27
+
+**Full Changelog**: https://github.com/protonemedia/laravel-dusk-fakes/compare/1.7.0...1.8.0
+
 ## 1.7.0 - 2024-11-20
 
 ### What's Changed
