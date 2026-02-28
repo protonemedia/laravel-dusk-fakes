@@ -1,6 +1,6 @@
 # Laravel Dusk Fakes Reference
 
-Complete reference for `protonemedia/laravel-dusk-fakes`. Full documentation: https://github.com/protonemedia/laravel-dusk-fakes#readme
+Complete reference for protonemedia/laravel-dusk-fakes. Full documentation: https://github.com/protonemedia/laravel-dusk-fakes#readme
 
 ## Start Here
 - README / docs: https://github.com/protonemedia/laravel-dusk-fakes#readme
