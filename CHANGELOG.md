@@ -2,24 +2,6 @@
 
 All notable changes to `laravel-dusk-fakes` will be documented in this file.
 
-## 1.9.0 - 2026-02-17
-
-### What's Changed
-
-* Bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 by @dependabot[bot] in https://github.com/protonemedia/laravel-dusk-fakes/pull/28
-* Bump aglipanci/laravel-pint-action from 2.5 to 2.6 by @dependabot[bot] in https://github.com/protonemedia/laravel-dusk-fakes/pull/31
-* Bump stefanzweifel/git-auto-commit-action from 5 to 7 by @dependabot[bot] in https://github.com/protonemedia/laravel-dusk-fakes/pull/32
-* Bump actions/checkout from 4 to 5 by @dependabot[bot] in https://github.com/protonemedia/laravel-dusk-fakes/pull/30
-* Bump dependabot/fetch-metadata from 2.4.0 to 2.5.0 by @dependabot[bot] in https://github.com/protonemedia/laravel-dusk-fakes/pull/34
-* Add PHP 8.5 support by @realpascalbotjet in https://github.com/protonemedia/laravel-dusk-fakes/pull/35
-* Bump actions/checkout from 5 to 6 by @dependabot[bot] in https://github.com/protonemedia/laravel-dusk-fakes/pull/33
-
-### New Contributors
-
-* @realpascalbotjet made their first contribution in https://github.com/protonemedia/laravel-dusk-fakes/pull/35
-
-**Full Changelog**: https://github.com/protonemedia/laravel-dusk-fakes/compare/1.8.0...1.9.0
-
 ## 1.8.0 - 2025-02-23
 
 ### What's Changed
