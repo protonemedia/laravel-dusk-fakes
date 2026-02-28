@@ -1,19 +1,15 @@
-# laravel-dusk-fakes development guide
+# Laravel Dusk Fakes Reference
 
-For full documentation, see the README: https://github.com/protonemedia/laravel-dusk-fakes#readme
+Complete reference for `protonemedia/laravel-dusk-fakes`. Full documentation: https://github.com/protonemedia/laravel-dusk-fakes#readme
 
-## At a glance
-Provides persistent fakes for Laravel Dusk (e.g., Bus/Mail/Notifications) so assertions work across browser process boundaries.
+## Start Here
+- README / docs: https://github.com/protonemedia/laravel-dusk-fakes#readme
 
-## Local setup
-- Install dependencies: `composer install`
-- Keep the dev loop package-focused (avoid adding app-only scaffolding).
+## Notes for AI Assistants
+- Treat the README as the source of truth for the supported public API.
+- Keep changes backward-compatible unless the change is explicitly a breaking change.
 
 ## Testing
-- Run: `composer test` (preferred) or the repository’s configured test runner.
-- Add regression tests for bug fixes.
+- Run the repository test command (see README / composer scripts).
 
-## Notes & conventions
-- Dusk runs in a separate process: persistence and storage are core.
-- Keep env-flag behavior stable (e.g., DUSK_FAKE_*).
-- Add tests for persistence/cleanup and selective faking behavior.
+For detailed usage examples and the full API surface, refer to the README.

@@ -1,14 +1,8 @@
-{{--
-  Laravel Boost guidelines (repository core)
+{{-- Laravel Dusk Fakes Guidelines for AI Code Assistants --}}
+{{-- Source: https://github.com/protonemedia/laravel-dusk-fakes --}}
+{{-- License: MIT | (c) ProtoneMedia --}}
 
-  This file intentionally stays small: it links this repository to its package-specific Boost skill.
---}}
+## Laravel Dusk Fakes
 
-<section>
-    <h2>Repository development skill</h2>
-
-    <p>
-        When working on this repository, activate the <code>laravel-dusk-fakes-development</code> skill.
-        It contains package-specific conventions, testing notes, and common pitfalls.
-    </p>
-</section>
+- Fakes and helpers for Laravel Dusk browser tests.
+- Always activate the `laravel-dusk-fakes-development` skill when making package-specific changes.
