@@ -187,9 +187,3 @@ Queue::assertDispatched(SendOrderInvoice::class);
 - **Env flags must be set for Dusk:** if the fake “does nothing”, verify `.env.dusk.*` contains the right `DUSK_FAKE_*` value.
 - **App/test process boundary:** don’t rely on `Bus::fake()` in the test process; use these traits instead.
 - **State leakage:** if the persistent fake stores state across requests, ensure tests clean up/avoid ordering dependence.
-
-## Testing (package itself)
-
-```bash
-composer test
-```
