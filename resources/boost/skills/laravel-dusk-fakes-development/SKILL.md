@@ -1,6 +1,6 @@
 ---
 name: laravel-dusk-fakes-development
-description: Development guidance for protonemedia/laravel-dusk-fakes. Fakes and helpers for Laravel Dusk browser tests.
+description: Development guidance for protonemedia/laravel-dusk-fakes (persistent fakes for Dusk).
 license: MIT
 metadata:
   author: ProtoneMedia
@@ -9,18 +9,12 @@ metadata:
 
 # Laravel Dusk Fakes Development
 
-## Overview
-Use this skill when changing package code, docs, tests, or release tooling for protonemedia/laravel-dusk-fakes.
-
-## When to Activate
-- You are modifying code in this repository.
-- You are reviewing/triaging issues or PRs for this package.
-- You are preparing a release (version bump, tag, changelog).
+Use this skill when changing code/docs/tests in `protonemedia/laravel-dusk-fakes`.
 
 ## Workflow
-1. Skim the README / docs to confirm the public contract.
-2. Read references/laravel-dusk-fakes-guide.md for common patterns and pitfalls.
-3. Keep changes small, add/update tests when behavior changes, and avoid breaking API changes.
+1. Treat the README as the source of truth for how Dusk fakes are enabled/used.
+2. Consult `references/laravel-dusk-fakes-guide.md` for trait usage, env flags, and partial-fake patterns.
+3. Be careful with Dusk environment handling; keep defaults and env keys stable.
 
-## References
+## Reference
 - references/laravel-dusk-fakes-guide.md
