@@ -2,10 +2,11 @@
 
 namespace ProtoneMedia\LaravelDuskFakes\Queue;
 
+use Illuminate\Support\Testing\Fakes\QueueFake;
 use Illuminate\Support\Traits\ForwardsCalls;
 
 /**
- * @mixin \Illuminate\Support\Testing\Fakes\QueueFake
+ * @mixin QueueFake
  */
 class UncachedPersistentQueueFake
 {

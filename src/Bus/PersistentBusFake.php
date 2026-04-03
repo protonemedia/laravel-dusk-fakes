@@ -75,9 +75,9 @@ class PersistentBusFake extends BusFake
         return tap(parent::dispatchToQueue($command), fn () => $this->storeBus());
     }
 
-    public function dispatchAfterResponse($command)
+    public function dispatchAfterResponse($command, $handler = null)
     {
-        return tap(parent::dispatchAfterResponse($command), fn () => $this->storeBus());
+        return tap(parent::dispatchAfterResponse($command, $handler), fn () => $this->storeBus());
     }
 
     public function recordPendingBatch(PendingBatch $pendingBatch)

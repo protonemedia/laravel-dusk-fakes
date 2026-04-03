@@ -2,10 +2,11 @@
 
 namespace ProtoneMedia\LaravelDuskFakes\Mails;
 
+use Illuminate\Support\Testing\Fakes\MailFake;
 use Illuminate\Support\Traits\ForwardsCalls;
 
 /**
- * @mixin \Illuminate\Support\Testing\Fakes\MailFake
+ * @mixin MailFake
  */
 class UncachedPersistentMailFake
 {

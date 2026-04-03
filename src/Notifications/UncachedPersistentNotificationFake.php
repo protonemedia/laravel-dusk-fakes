@@ -2,10 +2,11 @@
 
 namespace ProtoneMedia\LaravelDuskFakes\Notifications;
 
+use Illuminate\Support\Testing\Fakes\NotificationFake;
 use Illuminate\Support\Traits\ForwardsCalls;
 
 /**
- * @mixin \Illuminate\Support\Testing\Fakes\NotificationFake
+ * @mixin NotificationFake
  */
 class UncachedPersistentNotificationFake
 {
