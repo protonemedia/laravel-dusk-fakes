@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-dusk-fakes` will be documented in this file.
 
+## 1.10.0 - 2026-04-03
+
+### What's Changed
+
+* Add Inertia Modal link by @realpascalbotjet in https://github.com/protonemedia/laravel-dusk-fakes/pull/36
+* Support for Laravel 13 by @pascalbaljet in https://github.com/protonemedia/laravel-dusk-fakes/pull/39
+
+**Full Changelog**: https://github.com/protonemedia/laravel-dusk-fakes/compare/1.9.0...1.10.0
+
 ## 1.9.0 - 2026-02-17
 
 ### What's Changed
