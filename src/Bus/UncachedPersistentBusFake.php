@@ -2,10 +2,11 @@
 
 namespace ProtoneMedia\LaravelDuskFakes\Bus;
 
+use Illuminate\Support\Testing\Fakes\BusFake;
 use Illuminate\Support\Traits\ForwardsCalls;
 
 /**
- * @mixin \Illuminate\Support\Testing\Fakes\BusFake
+ * @mixin BusFake
  */
 class UncachedPersistentBusFake
 {
