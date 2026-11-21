@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-dusk-fakes` will be documented in this file.
 
+## 1.11.0 - 2026-11-21
+
+### What's Changed
+
+* Add PHP 8.6 and Laravel 13 support by @pascalbaljet in https://github.com/protonemedia/laravel-dusk-fakes/pull/42
+
+**Full Changelog**: https://github.com/protonemedia/laravel-dusk-fakes/compare/1.10.0...1.11.0
+
 ## 1.10.0 - 2026-04-03
 
 ### What's Changed
