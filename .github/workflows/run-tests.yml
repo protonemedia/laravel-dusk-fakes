@@ -12,8 +12,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [8.5, 8.4, 8.3, 8.2]
-        laravel: [13.*, 12.*, 11.*]
+        php: [8.6, 8.5, 8.4, 8.3, 8.2]
+        laravel: [13.*, 12.*]
         os: [ubuntu-latest, windows-latest]
         stability: [prefer-lowest, prefer-stable]
         exclude:
@@ -24,8 +24,6 @@ jobs:
             testbench: 11.*
           - laravel: 12.*
             testbench: 10.*
-          - laravel: 11.*
-            testbench: 9.*
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }}
 
